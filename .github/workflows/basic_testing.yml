@@ -56,19 +56,3 @@ jobs:
           TEST_DB_PASS: postgres
           TEST_DB_PORT: 5432
           TEST_DB_USER: postgres
-
-      - name: Run linter
-        run: |
-          pipenv run lint
-      - name: Run formatting check
-        run: |
-          pipenv run format --check
-      - name: Setup node.js (for pyright)
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12'
-
-      - name: Run type checking
-        run: |
-          npm install -g pyright
-          pipenv run typecheck
