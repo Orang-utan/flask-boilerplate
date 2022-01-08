@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  setup-testing:
+  basic-testing:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -18,7 +18,9 @@ jobs:
           python-version: 3.7
       - name: Install postgres
         run: sudo apt-get -y update && sudo apt-get install postgresql
-      - name: Install dependencies and run tests
-        run: pip install -r requirements.txt \
-          pip install -r requirements-dev.txt \
-          pytest tests
+      - name: Install virtual enviroment
+        run: pip install --user pipenv
+      - name: Instal requirements
+        run: pipenv install \ pipenv install --dev \ pipenv run python manage.py recreate_db
+      - name: Start Pipenv
+        run: pipenv shell
