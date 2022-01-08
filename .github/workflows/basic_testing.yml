@@ -20,7 +20,7 @@ jobs:
           cache-dependency-path: '**/lint.txt'
       - name: Install postgres
         run: sudo apt-get -y update && sudo apt-get install postgresql
-      - name Install dependencies and run tests:
+      - name: Install dependencies and run tests
         run: virtualenv venv \
           source venv/bin/activate \
           pip install -r requirements.txt \
