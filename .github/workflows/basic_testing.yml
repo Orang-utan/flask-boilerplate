@@ -1,8 +1,11 @@
 name: Running PyTests
+
 on:
+  pull_request:
   push:
     branches:
       - master
+
 jobs:
   setup-testing:
     runs-on: ubuntu-latest
