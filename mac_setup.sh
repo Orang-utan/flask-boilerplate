@@ -1,11 +1,10 @@
 #!/bin/bash
-# setup.sh 
+# setup.sh
 # Setup script for Flask Boilerplate only for Mac machines. Look at docs for windows
 
 set -o errexit  # exit on any errors
 
-brew install python3
-brew upgrade python3
+brew install python
 brew install postgresql
 brew link postgresql
 brew services start postgresql
@@ -22,7 +21,7 @@ done
 
 >&2 echo "Postgres is up - executing command"
 
-createdb || true    # create init database - pass on error 
+createdb || true    # create init database - pass on error
 psql -c "create user testusr with password 'password';" || true     # pass on error
 psql -c "ALTER USER testusr WITH SUPERUSER;" || true
 # psql -c "create database testdb owner testusr encoding 'utf-8';"
