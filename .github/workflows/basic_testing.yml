@@ -21,6 +21,6 @@ jobs:
       - name: Install virtual enviroment
         run: pip install --user pipenv
       - name: Instal requirements
-        run: pipenv install \ pipenv install --dev \ pipenv run python manage.py recreate_db
+        run: pipenv install
       - name: Start Pipenv
         run: pipenv shell
