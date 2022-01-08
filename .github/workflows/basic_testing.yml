@@ -16,11 +16,11 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.7
-          cache: 'pip'
       - name: Install postgres
         run: sudo apt-get -y update && sudo apt-get install postgresql
       - name: Install dependencies and run tests
-        run: virtualenv venv \
+        run: pip install virtualenv \
+          virtualenv venv \
           source venv/bin/activate \
           pip install -r requirements.txt \
           pip install -r requirements-dev.txt \
