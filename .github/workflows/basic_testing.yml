@@ -19,6 +19,7 @@ jobs:
       - name: Install postgres
         run: sudo apt-get -y update && sudo apt-get install postgresql
       - name: Install dependencies and run tests
+        working-directory: .
         run: pip install virtualenv \
           virtualenv venv \
           source venv/bin/activate \
