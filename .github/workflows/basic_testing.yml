@@ -1,0 +1,25 @@
+name: Running PyTests
+on:
+  push:
+    branches:
+      - master
+jobs:
+  setup-testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+          cache: 'pip'
+          cache-dependency-path: '**/lint.txt'
+      - name: Install postgres
+        run: sudo apt-get -y update && sudo apt-get install postgresql
+      - name Install dependencies and run tests:
+        run: virtualenv venv \
+          source venv/bin/activate \
+          pip install -r requirements.txt \
+          pip install -r requirements-dev.txt \
+          pytest tests
